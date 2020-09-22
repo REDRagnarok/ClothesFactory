@@ -5,18 +5,20 @@ namespace TailorStudio
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class TailorsCtxt : DbContext
+    public partial class TailorContext : DbContext
     {
-        public TailorsCtxt()
+        public TailorContext()
             : base("name=TailorContext")
         {
-        }
+			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TailorContext>());
+		}
 
-        public virtual DbSet<OrderedProducts> OrderedProducts { get; set; }
+        //public virtual DbSet<OrderedProducts> OrderedProducts { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
+		public virtual DbSet<Users> Users { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		/*protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Orders>()
                 .Property(e => e.ordStage)
@@ -45,8 +47,7 @@ namespace TailorStudio
             modelBuilder.Entity<Products>()
                 .HasMany(e => e.OrderedProducts)
                 .WithRequired(e => e.Products)
-                .HasForeignKey(e => e.opID)
                 .WillCascadeOnDelete(false);
-        }
-    }
+        }*/
+	}
 }

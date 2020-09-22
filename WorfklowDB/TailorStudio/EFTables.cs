@@ -7,37 +7,49 @@ namespace TailorStudio
 {
     class EFTables
     {
-        static void Main(string[] args)
+		enum Stages { New, OnHold, Processed,Rejected, ToPay,Paid, Cut, Production, Ready}
+
+		static void Main(string[] args)
         {
-            using (UserContext db = new UserContext())
+			/*Console.Write("Введите логин:");
+			string inputLogin = Console.ReadLine();
+			Console.Write("Введите пароль: ");
+			string inputPassword = Console.ReadLine();
+			bool AcsessGranted = false;
+
+
+			/*using (TailorContext TailorContext = new TailorContext())
             {
-                db.Users.Add(new User { Id = 5, Name = "Bill", Age = 56 });
-                /*db.Users.Add(new User { Id = 2, Name = "Jennifer", Age = 39 });
-                db.Users.Add(new User { Id = 3, Name = "Peter", Age = 14 });
-                db.Users.Add(new User { Id = 4, Name = "Zelda", Age = 19 });*/
-                //db.Users.Add(new User { Id = 5, Name = "Axel", Age = 23 });
-                db.SaveChanges();
-                Console.WriteLine("Объекты успешно сохранены");
-            }
-            Console.ReadKey();
-        }
-    }
+				var users = TailorContext.Users;
+				foreach (Users acc in users)
+				{
+					if ((acc.Login == inputLogin) && (acc.Password == inputPassword))
+					{
+						AcsessGranted = true;
+					}
+						
+					//Console.WriteLine("{0},{1},{2},{3}",acc.Login, acc.Name, acc.Password,acc.Role);
+				}
+			}
 
-    public class User
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-    }
+			if (AcsessGranted)
+				Console.WriteLine("Успешная авторизация");
+			else
+				Console.WriteLine("Неверный логин или пароль");*/
 
-    public class UserContext : DbContext
-    {
-        public DbSet<User> Users { get; set; }
-        public UserContext() : base("dbconn")
-        {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<UserContext>());
-        }
 
+			using (TailorContext TailorContext = new TailorContext())
+			{
+				TailorContext.Products.Add(new Products (1,"шелк", 2, 5,"",""));
+				TailorContext.Users.Add(new Users("Polzovatel", "11111", 1, "Sebastian"));
+				TailorContext.Orders.Add(new Orders(1, Convert.ToDateTime("2020-05-17 17:08:23"), 1, "Ivanov","Petrov",1000));
+				TailorContext.SaveChanges();
+				Console.WriteLine("Объекты успешно сохранены");
+				Console.ReadKey();
+			}
+						
+		}
     }
+	    
 }
 
