@@ -11,14 +11,14 @@ namespace TailorStudio
 
 		static void Main(string[] args)
         {
-			/*Console.Write("Введите логин:");
+			Console.Write("Введите логин:");
 			string inputLogin = Console.ReadLine();
 			Console.Write("Введите пароль: ");
 			string inputPassword = Console.ReadLine();
 			bool AcsessGranted = false;
 
 
-			/*using (TailorContext TailorContext = new TailorContext())
+			using (TailorContext TailorContext = new TailorContext())
             {
 				var users = TailorContext.Users;
 				foreach (Users acc in users)
@@ -35,10 +35,10 @@ namespace TailorStudio
 			if (AcsessGranted)
 				Console.WriteLine("Успешная авторизация");
 			else
-				Console.WriteLine("Неверный логин или пароль");*/
+				Console.WriteLine("Неверный логин или пароль");
 
 
-			using (TailorContext TailorContext = new TailorContext())
+			/*using (TailorContext TailorContext = new TailorContext())
 			{
 				TailorContext.Products.Add(new Products (1,"шелк", 2, 5,"",""));
 				TailorContext.Users.Add(new Users("Polzovatel", "11111", 1, "Sebastian"));
@@ -46,7 +46,7 @@ namespace TailorStudio
 				TailorContext.SaveChanges();
 				Console.WriteLine("Объекты успешно сохранены");
 				Console.ReadKey();
-			}
+			}*/
 						
 		}
     }
